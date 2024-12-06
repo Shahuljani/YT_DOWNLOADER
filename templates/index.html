@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>All YouTube Videos Downloader | Channel URL</title>
+</head>
+<body>
+    <header>
+        <nav id="nav-left">
+            <img src="{{ url_for('static', filename='images/st_logo_.png') }}" alt="Logo">
+            <h1>SAVE.</h1> 
+            <h1 id="logo-name">them</h1>
+        </nav>
+        <nav id="nav-right">
+            <p id="shop">
+                <span id="shop1"><b>Shopping</b></span>: For 
+                <span id="offers">offers</span> & deals visit
+            </p>
+            <a href="https://t.me/nxtdeals" id="link1"><b>Telegram</b></a>
+            <a href="https://t.me/nxtdeals" id="link2"><b>WhatsApp</b></a>
+            <a href="https://t.me/nxtdeals" id="link3"><b>Instagram</b></a>
+        </nav>
+    </header>
+
+    <video autoplay muted loop id="background-video">
+        <source src="{{ url_for('static', filename='videos/bg_web.mp4') }}" type="video/mp4">
+    </video>
+    
+    <main>
+        <form id="box" onsubmit="downloadVideo(event)">
+            <h2 id="premium-text">Unlimited <span id="free-text">FREE</span> Downloads, Just a Click Away!</h2>
+            <p id="sup">Support for both YouTube & Instagram Videos..</p>
+            <label for="url-box"></label>
+            <input type="text" id="url-box" placeholder="Paste YouTube Video URL" required>
+            <button type="submit" id="download">Download</button>
+        </form>
+    </main>
+
+    <footer id="footer">
+        <p id="footer-text">@ Designed By Shaik Shahul</p>
+    </footer>
+
+    <script>
+        async function downloadVideo(event) {
+            event.preventDefault(); // Prevent the form from reloading the page
+            const url = document.getElementById('url-box').value;
+    
+            if (!url) {
+                alert("Please enter a URL.");
+                return;
+            }
+    
+            try {
+                // Show the "Downloading..." alert
+                alert("Downloading video... Please wait.");
+
+                const response = await fetch('/download', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                
+                // Hide the alert once the download starts (or handle it in a different way)
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'video.mp4'; // Default file name
+                    link.click();
+                    alert("Video download started successfully.");
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.error}`);
+                }
+            } catch (error) {
+                console.error("Error downloading video:", error);
+                alert("An error occurred while downloading the video.");
+            }
+        }
+    </script>
+</body>
+</html>

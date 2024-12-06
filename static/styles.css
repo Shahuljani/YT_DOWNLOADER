@@ -1,0 +1,296 @@
+/* Base Reset and Styling */
+* {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensure body grows with content */
+    font-family: Arial, sans-serif;
+}
+
+    #background-video {
+        position: absolute; /* Fix the video in place */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        /* Ensures video fills the screen and maintains aspect ratio */
+        z-index: -1; /* Keeps the video in the background */
+    }
+
+/* General Header Styling */
+header {
+    height: 10vh;
+    background-color: #AF42AE;
+    display: flex;
+    justify-content: space-between; /* Ensures left and right navs are on opposite sides */
+    align-items: center; /* Aligns content vertically in the header */
+    padding: 0 20px; /* Adds padding on both sides of the header */
+}
+
+/* Left Navigation Styling */
+#nav-left {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#nav-left h1 {
+    margin: 0 5px; /* Add space between the headings */
+    font-size: 30px;
+}
+
+/* Right Navigation Styling */
+#nav-right {
+    display: flex; /* Align links in a row */
+    align-items: center; /* Center vertically */
+    gap: 20px; /* Space between the links */
+}
+
+#nav-right a {
+    text-decoration: none; /* Remove underline from links */
+    color: #003d80;
+    font-size: 16px;
+    background-color: #faff00; /* Button-like background */
+    padding: 5px 15px; /* Adds padding for button effect */
+    border-radius: 5px; /* Round corners */
+    transition: background-color 0.3s ease;
+}
+
+#nav-right a:hover {
+    background-color: white; /* Change background on hover */
+}
+
+#shop {
+    color: white;
+}
+
+#shop1 {
+    color: #faff00;
+}
+
+#offers {
+    background-color: rgb(255, 0, 0);
+}
+
+/* Image Styling (if needed) */
+header img {
+    height: 8vh; /* Adjust height as per design */
+    margin-right: 10px; /* Space between the logo and nav-left */
+}
+
+header h1 {
+    font-size: 30px;
+    color: white;
+    text-align: left; /* Align text */
+}
+
+#logo-name {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    text-align: left;
+}
+
+main {
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#box {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 80vh;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+}
+
+#url-box {
+    width: 100%; /* Make the input take full width */
+    max-width: 800px; /* Max width for larger screens */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0; /* Space between elements */
+}
+
+#download {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #AF42AE;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button#download:hover {
+    background-color: #005bb5;
+}
+
+#footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #C585B3; /* Set the footer background color */
+    color: black; /* Set the text color to black */
+    font-size: 16px;
+}
+
+#premium-text {
+    color: #faff00;
+}
+
+#free-text {
+    background-color: red;
+    color: white;
+    border-radius: 0.1rem;
+}
+#end{
+    color: white;
+}
+#sup{
+    color: white;
+    border: salmon;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For devices up to 768px (tablets, smaller screens) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack elements vertically */
+        height: auto; /* Adjust height dynamically */
+        text-align: center;
+    }
+    #background-video {
+        position: absolute; /* Fix the video in place */
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover; /* Ensures video fills the screen and maintains aspect ratio */
+        z-index: -1; /* Keeps the video in the background */
+    }
+
+    #nav-left {
+        justify-content: center; /* Center the logo */
+    }
+
+    #nav-left img {
+        margin-bottom: 10px;
+    }
+
+    #nav-right {
+        gap: 10px; /* Adjust spacing between links */
+    }
+
+    #nav-right a {
+        font-size: 14px; /* Reduce font size */
+        padding: 5px 10px; /* Adjust padding for buttons */
+    }
+    #footer{
+        position: absolute;
+        width: 100vw;
+    }
+}
+
+/* For devices up to 480px (mobile phones) */
+@media (max-width: 480px) {
+    #background-video {
+        position: fixed; /* Ensure the video stays fixed even when scrolling */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the video always covers the entire viewport */
+        z-index: -1; /* Keeps the video in the background */
+    }
+
+    header {
+        padding: 10px; /* Add some padding */
+    }
+
+    #nav-left h1, #logo-name {
+        font-size: 50px; /* Reduce font size of the logo */
+    }
+
+    #nav-right {
+        flex-wrap: wrap; /* Allow wrapping for links */
+        gap: 5px; /* Reduce gap between links */
+    }
+
+    #nav-right a {
+        font-size: 12px; /* Smaller text for social links */
+        padding: 4px 8px; /* Adjust padding */
+    }
+
+    #box {
+        padding: 10px; /* Add padding for form box */
+    }
+
+    #shop {
+        font-size: 7px;
+    }
+    #premium-text{
+        font-size: 12px;
+    }
+    #footer{
+        position: absolute;
+        width: 100vw;
+    }
+}
+@media (max-width: 1024px) and (orientation: portrait) {
+    #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1;
+    }
+    main {
+        padding: 20px;
+    }
+   
+    header {
+        padding: 10px; /* Add some padding */
+    }
+
+    #nav-left h1, #logo-name {
+        font-size: 50px; /* Reduce font size of the logo */
+    }
+
+    #nav-right {
+        flex-wrap: wrap; /* Allow wrapping for links */
+        gap: 5px; /* Reduce gap between links */
+    }
+
+    #nav-right a {
+        font-size: 12px; /* Smaller text for social links */
+        padding: 4px 8px; /* Adjust padding */
+    }
+
+    #box {
+        padding: 10px; /* Add padding for form box */
+    }
+
+    #shop {
+        font-size: 7px;
+    }
+    #footer{
+        position: absolute;
+        width: 100vw;
+    }
+
+}
+
